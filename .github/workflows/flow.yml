@@ -1,0 +1,17 @@
+name: GitHub Actions Rust
+
+on: [Push]
+
+jobs:
+  rust-jobs:
+    runs-on: ubuntu-latest 
+
+    steps:
+      - name: "test"
+        run: cargo test
+
+      - name: "build"
+        run: cargo build --release
+
+      - name: "Say Hello"
+        run: cargo run "aki"
