@@ -1,4 +1,4 @@
-use gomi_actions_rs::greet;
+use gh_actions_test_rs::greet;
 
 fn main() {
     let args = std::env::args().collect::<Vec<String>>();

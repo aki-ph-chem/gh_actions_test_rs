@@ -1,17 +1,25 @@
-name: GitHub Actions Rust
+name: Rust
 
-on: [Push]
+on:
+  push:
+    branches:
+      - main
+
+env:
+  CARGO_TERM_COLOR: always
 
 jobs:
-  rust-jobs:
-    runs-on: ubuntu-latest 
-
+  test_and_build:
+    runs-on: ubuntu-latest
     steps:
-      - name: "test"
-        run: cargo test
+      - name: checkout repositry
+        uses: actions/checkout@v2
 
-      - name: "build"
-        run: cargo build --release
+      - name: set up rust toolchain
+        uses: dtolnay/rust-toolchain@stable
 
-      - name: "Say Hello"
-        run: cargo run "aki"
+      - name: Run tests
+        run: cargo test --verbose
+
+      - name: Build
+        run: cargo build --verbose
