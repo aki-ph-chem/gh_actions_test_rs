@@ -28,5 +28,11 @@ deploy:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-ポイントは`needs`でこの`deploy`が実行される前に`build_and_test`が実行されるようにすること、`permissions`で書き込み権限を与えること、
-最後に`gh`コマンドで`release`へのアップロード処理を実行することである。
+ポイントは
+
+- `needs`でこの`deploy`が実行される前に`build_and_test`が実行されるようにする
+- `permissions`で書き込み権限を与える
+- `env`で` GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}`でトークンを渡す
+- `gh`コマンドで`release`へのアップロード処理を実行する
+
+である。
